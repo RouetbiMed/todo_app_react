@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import {Switch} from "react-router-dom";
+import {PrivateRoute, PublicRoute} from './routers'
+import SignInPage from './pages/auth/SignInPage';
+import SignUpPage from './pages/auth/SignUpPage';
+import TasksPage from './pages/TasksPage';
 
-function App() {
+export default function App() {
     return (
-        <div>
-            <p>Hello react</p>
-        </div>
+        <Switch>
+            <PrivateRoute exact path="/" component={TasksPage}/>
+            <PublicRoute exact path="/register" component={SignUpPage}/>
+            <PublicRoute exact path="/login" component={SignInPage}/>
+        </Switch>
     );
 }
-
-export default App;
